@@ -1,0 +1,21 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00b7ff;
+}
+
+#to-center {
+  margin-left: 42%;
+}
+
+#to-right {
+  margin-left: 42%;
+}
+
+#logout {
+  /* margin-top: 350px; */
+  margin-left: 15px;
+}
