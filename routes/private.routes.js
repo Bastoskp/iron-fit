@@ -6,20 +6,20 @@ router.get("/home", (req, res, next) => {
   res.render("private/home", userInSession);
 });
 
-router.get("/alunos", (req, res, next) => res.render("private/alunos"));
+router.get("/private/aluno", (req, res, next) => res.render("private/aluno"));
 
-router.get("/aluno/cadastro", (req, res, next) =>
-  res.render("private/aluno/cadastro")
+router.get("/private/aluno-cadastro", (req, res, next) =>
+  res.render("private/aluno-cadastro")
 );
 
-router.get("/aluno/editar/id", (req, res, next) =>
-  res.render("private/aluno/cadastro")
+router.get("/private/aluno/editar/id", (req, res, next) =>
+  res.render("private/aluno/editar/id")
 );
 
-router.get("/planos", (req, res, next) => res.render("private/planos"));
+router.get("/private/planos", (req, res, next) => res.render("private/planos"));
 
-router.get("/planos/cadastro", (req, res, next) =>
-  res.render("private/planos/cadastro")
+router.get("/private/planos-cadastro", (req, res, next) =>
+  res.render("private/planos-cadastro")
 );
 
 router.get("/planos", (req, res, next) => res.render("private/editar/id"));

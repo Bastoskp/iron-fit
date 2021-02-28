@@ -11,7 +11,10 @@ const User = require("../models/User.model");
 //   res.render("index");
 // });
 
-router.get("/", (req, res, next) => res.render("login"));
+router.get("/", (req, res, next) => {
+  res.render("login", { layout: false });
+});
+
 router.post("/login", (req, res, next) => {
   console.log("SESSION =====>", req.session);
   const { email, password } = req.body;
@@ -40,7 +43,9 @@ router.post("/login", (req, res, next) => {
     .catch((error) => next(error));
 });
 
-router.get("/signup", (req, res, next) => res.render("signup"));
+router.get("/signup", (req, res, next) => {
+  res.render("signup", { layout: false });
+});
 
 router.post("/signup", (req, res, next) => {
   const { username, email, password } = req.body;

@@ -1,21 +1,27 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url("../images/img1.png");
+  background-repeat: no-repeat;
+  border: 1px solid red;
+  left: 0px;
+  top: 0px;
+  overflow: hidden;
+  margin: 0px;
+  padding: 0px;
+  height: 1076px;
+  width: 100%;
+  z-index: -999999;
+  position: fixed;
 }
 
 a {
   color: #00b7ff;
 }
 
-#to-center {
-  margin-left: 42%;
+.to-center {
+  text-align: center;
+  margin-top: 150px;
 }
 
-#to-right {
-  margin-left: 42%;
-}
-
-#logout {
-  /* margin-top: 350px; */
-  margin-left: 15px;
-}
+/*# sourceMappingURL=style.css.map */
