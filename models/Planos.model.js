@@ -11,6 +11,8 @@ const planosSchema = new Schema(
       type: Number,
       required: [true, "valor do plano"],
     },
+
+    user_id: Schema.Types.ObjectId,
   },
   {
     timestamps: true,

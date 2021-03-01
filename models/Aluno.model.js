@@ -24,8 +24,11 @@ const alunoSchema = new Schema(
       type: Date,
     },
 
-    telefone: Number,
+    telefone: String,
+
+    user_id: Schema.Types.ObjectId,
   },
+
   {
     timestamps: true,
   }

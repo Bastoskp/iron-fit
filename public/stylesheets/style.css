@@ -1,27 +1,12 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-image: url("../images/img1.png");
-  background-repeat: no-repeat;
-  border: 1px solid red;
-  left: 0px;
-  top: 0px;
-  overflow: hidden;
-  margin: 0px;
-  padding: 0px;
-  height: 1076px;
-  width: 100%;
-  z-index: -999999;
-  position: fixed;
+  background-image: url("../images/img2.jpg");
+  background-size: cover;
 }
 
 a {
   color: #00b7ff;
-}
-
-.to-center {
-  text-align: center;
-  margin-top: 150px;
 }
 
 /*# sourceMappingURL=style.css.map */

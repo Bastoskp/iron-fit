@@ -1,1 +1,7 @@
-<div>aluno</div>
+<div>
+  <a href="/private/aluno-cadastro">Cadastrar Aluno</a>
+
+  {{#each alunos}}
+    <p>{{this.nome}}</p>
+  {{/each}}
+</div>

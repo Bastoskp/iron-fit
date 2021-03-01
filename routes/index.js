@@ -15,32 +15,43 @@ router.get("/", (req, res, next) => {
   res.render("login", { layout: false });
 });
 
-router.post("/login", (req, res, next) => {
+// rota feita com async await
+
+router.post("/login", async (req, res, next) => {
   console.log("SESSION =====>", req.session);
   const { email, password } = req.body;
 
   if (email === "" || password === "") {
     res.render("login", {
       errorMessage: "Por entrar com email e senha para login",
+      layout: false,
     });
     return;
   }
-  User.findOne({ email })
-    .then((userFromDb) => {
-      if (!userFromDb) {
-        res.render("login", {
-          errorMessage: "Email não registrado. Tente com outro e-mail",
-        });
-        return;
-      } else if (bcryptjs.compareSync(password, userFromDb.passwordHash)) {
-        // res.render("private/home", { userFromDb });
-        req.session.currentUser = userFromDb;
-        res.redirect("/home");
-      } else {
-        res.render("login", { errorMessage: "Password incorreto" });
-      }
-    })
-    .catch((error) => next(error));
+  let userFromDb;
+  try {
+    userFromDb = await User.findOne({ email });
+  } catch (error) {
+    return next(error);
+  }
+
+  if (!userFromDb) {
+    res.render("login", {
+      errorMessage: "Email não registrado. Tente com outro e-mail",
+      layout: false,
+    });
+    return;
+  } else if (bcryptjs.compareSync(password, userFromDb.passwordHash)) {
+    console.log("userFromDb ===>", userFromDb);
+    req.session.currentUser = userFromDb;
+    console.log("currentUser ===>", req.session.currentUser);
+    res.render("private/home", { userInSession: req.session.currentUser });
+  } else {
+    res.render("login", {
+      errorMessage: "Password incorreto",
+      layout: false,
+    });
+  }
 });
 
 router.get("/signup", (req, res, next) => {
@@ -55,6 +66,7 @@ router.post("/signup", (req, res, next) => {
     res.status(500).render("signup", {
       errorMessage:
         "A senha precisa ter pelo menos 6 caracteres e deve conter pelo menos um número, uma letra minúscula e uma letra maiúscula.",
+      layout: false,
     });
     return;
   }
@@ -70,17 +82,20 @@ router.post("/signup", (req, res, next) => {
       })
         .then((userFromDb) => {
           console.log("Novo usuario", userFromDb);
+          req.session.currentUser = userFromDb;
           res.redirect("/home");
         })
         .catch((error) => {
           if (error instanceof mongoose.Error.ValidationError) {
             res.status(500).render("signup", {
               errormessage: error.message,
+              layout: false,
             });
           } else if (error.code === 11000) {
             console.log("teste");
             res.status(500).render("signup", {
               errorMessage: "O nome de usuário ou o e-mail já são usados.",
+              layout: false,
             });
           } else {
             next(error);
@@ -90,10 +105,6 @@ router.post("/signup", (req, res, next) => {
         });
     })
     .catch((error) => next(error));
-});
-
-router.get("/home", (req, res) => {
-  res.render("private/home", { userInSession: req.session.currentUser });
 });
 
 router.post("/logout", (req, res) => {
