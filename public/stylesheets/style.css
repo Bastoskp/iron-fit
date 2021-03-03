@@ -1,7 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-image: url("..//images/img2.jpg");
+  background-image: url("../images/img2.jpg");
   background-size: cover;
 }
 
@@ -9,4 +9,7 @@ a {
   color: #00b7ff;
 }
 
-/*# sourceMappingURL=style.css.map */
+.to-center {
+  text-align: center;
+  margin-top: 15%;
+}
