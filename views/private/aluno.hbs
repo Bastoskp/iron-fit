@@ -3,10 +3,6 @@
 
   {{#each alunos}}
     <p>{{this.nome}}</p>
-    {{!-- <p>{{this.email}}</p> --}}
+    <a href="/private/aluno/editar/{{this._id}}">Editar</a>
  {{/each}}
-
- {{!-- {{#each alunos}}
-    <p>{{this.email}}</p>
- {{/each}} --}}
 </div>

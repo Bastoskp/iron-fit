@@ -10,7 +10,8 @@ router.get("/home", (req, res, next) => {
 });
 
 router.get("/private/aluno", (req, res, next) => {
-  Aluno.find() //Aluno.find({user_id: "id do usuario"})
+  const user_id = req.session.currentUser._id;
+  Aluno.find({ user_id })
     .then((alunosFromDb) => {
       res.render("private/aluno", { alunos: alunosFromDb });
     })
@@ -39,13 +40,16 @@ router.post("/private/aluno-cadastro", (req, res, next) => {
     .catch((error) => next(error));
 });
 
-router.get("/private/aluno/editar/id", (req, res, next) =>
-  res.render("private/aluno/editar/id")
-);
+router.get("/private/aluno/editar/:id", (req, res, next) => {
+  const alunoId = req.params.id;
+  res.render("private/aluno-editar");
+});
 
 router.get("/private/planos", (req, res, next) => {
-  Planos.find()
+  const user_id = req.session.currentUser._id;
+  Planos.find({ user_id })
     .then((planosFromDb) => {
+      console.log("get planos =====>", planosFromDb);
       res.render("private/planos", { planos: planosFromDb });
     })
     .catch((error) => next(error));
@@ -57,12 +61,14 @@ router.get("/private/planos-cadastro", (req, res, next) =>
 
 router.post("/private/planos-cadastro", (req, res, next) => {
   const user_id = req.session.currentUser._id;
-  const { duracao, valor } = req.body;
-  Plano.create({
+  const { duracao, valorplano } = req.body;
+  Planos.create({
     duracao,
-    valor,
+    valor: valorplano,
+    user_id,
   })
-    .then((planoFromDb) => {
+    .then((planosFromDb) => {
+      console.log("isto é planoFromDb", planosFromDb);
       res.redirect("/private/planos");
     })
     .catch((error) => next(error));
