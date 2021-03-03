@@ -1,1 +1,7 @@
-<div>planos</div>
+<div>
+  <a href="/private/planos-cadastro">Cadastrar Planos</a>
+
+  {{#each planos}}
+    <p>{{this.nome}}</p>
+  {{/each}}
+</div>
