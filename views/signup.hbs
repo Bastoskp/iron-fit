@@ -1,12 +1,8 @@
 <link rel="stylesheet" href="stylesheets/style.css">
 
-
-
 <div class="to-center">
   <h2>Signup</h2>
 
-  <br>
-  
   <form action="/signup" method="POST">
     <label for="input-username">Username</label>
     <input type="text" id="input-username" name="username" placeholder="Your username" />
@@ -19,7 +15,6 @@
 
     <button type="submit">Create account</button>
     
-
     {{!-- error message will be added here --}}
      {{#if errorMessage}}
       <p class="error">{{errorMessage}}</p>
@@ -27,6 +22,3 @@
   </form>
 </div>
 
-<picture>
-  <img class="img-fluid" src="../public/images/img2.jpg" alt="">
-</picture>

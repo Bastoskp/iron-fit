@@ -26,7 +26,10 @@ const alunoSchema = new Schema(
 
     telefone: String,
 
-    user_id: Schema.Types.ObjectId,
+    user_id: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
   },
 
   {

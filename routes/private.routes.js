@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const Aluno = require("../models/Aluno.model");
+const Planos = require("../models/Planos.model");
 
 router.get("/home", (req, res, next) => {
   const userInSession = req.session.currentUser;
@@ -21,6 +22,7 @@ router.get("/private/aluno-cadastro", (req, res, next) =>
 );
 
 router.post("/private/aluno-cadastro", (req, res, next) => {
+  const user_id = req.session.currentUser._id;
   const { nome, email, planos, inicioPlanos, aniversario, telefone } = req.body;
   Aluno.create({
     nome,
@@ -29,7 +31,7 @@ router.post("/private/aluno-cadastro", (req, res, next) => {
     inicioPlanos,
     aniversario,
     telefone,
-    // user_id: req.session.currentUser._id,
+    user_id,
   })
     .then((alunoFromDb) => {
       res.redirect("/private/aluno");
@@ -41,11 +43,30 @@ router.get("/private/aluno/editar/id", (req, res, next) =>
   res.render("private/aluno/editar/id")
 );
 
-router.get("/private/planos", (req, res, next) => res.render("private/planos"));
+router.get("/private/planos", (req, res, next) => {
+  Planos.find()
+    .then((planosFromDb) => {
+      res.render("private/planos", { planos: planosFromDb });
+    })
+    .catch((error) => next(error));
+});
 
 router.get("/private/planos-cadastro", (req, res, next) =>
   res.render("private/planos-cadastro")
 );
+
+router.post("/private/planos-cadastro", (req, res, next) => {
+  const user_id = req.session.currentUser._id;
+  const { duracao, valor } = req.body;
+  Plano.create({
+    duracao,
+    valor,
+  })
+    .then((planoFromDb) => {
+      res.redirect("/private/planos");
+    })
+    .catch((error) => next(error));
+});
 
 router.get("/planos", (req, res, next) => res.render("private/editar/id"));
 

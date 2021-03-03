@@ -5,53 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 <body>
 
-  
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">IRON FIT</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/home">Home</a></li>
+      <li><a href="/private/aluno">Aluno</a></li>
+      <li><a href="/private/planos">Plano</a></li>
+    </ul>
 
-  <nav class="nav flex-column">
-
- 
-
-    <ul class="nav nav-backg flex-column">
-
-<li class="nav-item">
-<a href="/home">Ir para home</a>
-</li>
-
-      <li class="nav-item">
-        <a class="nav-link active linktres" href="/private/aluno">ALUNOS</a>
-      </li>
-      
-      <li class="nav-item">
-        <a class="nav-link linktres" href="/private/planos">PLANOS</a>
-      </li>
-
-      <li id="logout">
-        <form id="logout-form" action="/logout" method="POST">
-          <button>Logout</button>
-        </form>
-      </li>
-     
-  </ul>
-
-  {{!-- views/layout.hbs --}}
-{{!-- nothing gets updated except the navbar --}}
-
-  
-
-
+    <form id="logout-form" action="/logout" method="POST">
+        <button class="btn btn-danger navbar-btn">Logout</button>
+      </form>
+    </div>
+</nav>
 
 <main>
   {{{body}}}
 </main>
   
-
-  <script src="/javascripts/script.js"></script>
+<script src="/javascripts/script.js"></script>
 </body>
 </html>
