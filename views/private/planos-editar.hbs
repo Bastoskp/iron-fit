@@ -1,19 +1,39 @@
 
 <div class="to-center fundo-transparente" >
-<h2>Editar Plano: {{title}}</h2>
+<h2>Editar Plano</h2>
 
-<form action="/private/planos-cadastro" method="POST">
+<form action="/private/planos/editar/{{planosFromDb.id}}" method="POST">
     <label for="duracao">Duração do Plano</label>
     <select name="duracao" id="duracao">
+       {{#with planosFromDb}}
+       {{#ifCond duracao "mensal"}}
+        <option selected value="mensal">Mensal</option>
+        {{else}}
         <option value="mensal">Mensal</option>
-        <option value="trimestral">Trimestral</option>
-        <option value="semestral">Semestral</option>
-        <option value="anual">Anual</option>
-       {{!-- <input type="text" id="duracao" name="duracao" placeholder="Duração do Plano" /> --}}
+      {{/ifCond}}
+
+       {{#ifCond duracao "trimestral"}}
+        <option selected value="trimestral">trimestral</option>
+        {{else}}
+        <option value="trimestral">trimestral</option>
+      {{/ifCond}}
+
+       {{#ifCond duracao "semestral"}}
+        <option selected value="semestral">semestral</option>
+        {{else}}
+        <option value="semestral">semestral</option>
+      {{/ifCond}}
+
+       {{#ifCond duracao "anual"}}
+        <option selected value="anual">anual</option>
+        {{else}}
+        <option value="anual">anual</option>
+      {{/ifCond}}
+      {{/with}}
     </select>   
   
     <label for="valorplano">Valor do Plano</label>
-    <input type="text" id="valorplano" name="valorplano" placeholder="Valor do Plano" />
+    <input type="text" id="valorplano" name="valor" value="{{planosFromDb.valor}}" placeholder="Valor do Plano" />
 
      <button type="submit">Salvar</button>
 
