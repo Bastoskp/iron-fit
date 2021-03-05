@@ -1,14 +1,24 @@
 <link rel="stylesheet" href="stylesheets/style.css">
 
-{{!-- <div>planos cadastro</div> --}}
-
-<form action="/private/planos-cadastro" method="POST">
+<form class="to-center fundo-transparente" action="/private/planos-cadastro" method="POST">
     <label for="duracao">Duração do Plano</label>
-    <input type="text" id="duracao" name="duracao" placeholder="Duração do Plano" />
+     <select name="duracao" id="duracao">
+        <option value="mensal">Mensal</option>
+        <option value="trimestral">Trimestral</option>
+        <option value="semestral">Semestral</option>
+        <option value="anual">Anual</option>
+       {{!-- <input type="text" id="duracao" name="duracao" placeholder="Duração do Plano" /> --}}
+    </select>
 
   
     <label for="valorplano">Valor do Plano</label>
-    <input type="text" id="valorplano" name="valorplano" placeholder="Valor do Plano" />
+    <select name="duracao" id="duracao">
+        <option value="mensal">100</option>
+        <option value="trimestral">150</option>
+        <option value="semestral">200</option>
+        <option value="anual">350</option>
+       {{!-- <input type="text" id="duracao" name="duracao" placeholder="Duração do Plano" /> --}}
+    </select>
 
      <button type="submit">Cadastrar Planos</button>
 

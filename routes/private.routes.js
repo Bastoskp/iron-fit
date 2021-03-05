@@ -11,6 +11,7 @@ router.get("/home", (req, res, next) => {
 
 router.get("/private/aluno", (req, res, next) => {
   const user_id = req.session.currentUser._id;
+  console.log(user_id);
   Aluno.find({ user_id })
     .then((alunosFromDb) => {
       res.render("private/aluno", { alunos: alunosFromDb });
@@ -41,8 +42,40 @@ router.post("/private/aluno-cadastro", (req, res, next) => {
 });
 
 router.get("/private/aluno/editar/:id", (req, res, next) => {
-  const alunoId = req.params.id;
-  res.render("private/aluno-editar");
+  const { id } = req.params;
+
+  Aluno.findById(id)
+    .then((alunoFromDb) => {
+      res.render("private/aluno-editar", { alunoFromDb });
+    })
+    .catch((error) => console.log("erro do editar", error));
+});
+
+router.post("/private/aluno/editar/:id", (req, res, next) => {
+  const { id } = req.params;
+  // const user_id = req.session.currentUser._id;
+  const { nome, email, planos, inicioPlanos, aniversario, telefone } = req.body;
+
+  Aluno.findByIdAndUpdate(
+    id,
+    { nome, email, planos, inicioPlanos, aniversario, telefone },
+    { new: true }
+  )
+    .then((alunoFromDb) => {
+      console.log(alunoFromDb);
+      res.redirect("/private/aluno");
+    })
+    .catch((error) => console.log(`Erro em atualizar aluno: ${error} `));
+});
+
+// ROUTE DELETE ALUNO
+
+router.post("/aluno/:id/delete", (req, res) => {
+  const { id } = req.params;
+
+  Aluno.findByIdAndDelete(id)
+    .then(() => res.redirect("/aluno"))
+    .catch((error) => console.log(`Error while deleting a plano: ${error}`));
 });
 
 router.get("/private/planos", (req, res, next) => {
@@ -74,6 +107,28 @@ router.post("/private/planos-cadastro", (req, res, next) => {
     .catch((error) => next(error));
 });
 
-router.get("/planos", (req, res, next) => res.render("private/editar/id"));
+router.get("/private/planos/editar/:id", (req, res, next) => {
+  const { id } = req.params;
+
+  Planos.findById(id)
+    .then((planosFromDb) => {
+      res.render("private/planos-editar", { planosFromDb });
+    })
+    .catch((error) => console.log("erro do editar", error));
+});
+
+router.post("/private/planos/editar/:id", (req, res, next) => {
+  const { id } = req.params;
+  const { duracao, valor, user_id } = req.body;
+});
+
+// ROUTE DELETE PLANO
+router.post("/planos/:id/delete", (req, res) => {
+  const { id } = req.params;
+
+  Planos.findByIdAndDelete(id)
+    .then(() => res.redirect("/planos"))
+    .catch((error) => console.log(`Error while deleting a plano: ${error}`));
+});
 
 module.exports = router;
