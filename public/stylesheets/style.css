@@ -1,7 +1,8 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-image: url("..//images/img2.jpg");
+  font: 14px;
+  font-family: "Arimo";
+  background-image: url("../images/img2.jpg");
   background-size: cover;
 }
 
@@ -9,4 +10,39 @@ a {
   color: #00b7ff;
 }
 
-/*# sourceMappingURL=style.css.map */
+.ironfit {
+  /* font-family: "Goudy Bookletter 1911", sans-serif;
+  font-size: 50px; */
+}
+
+.logo {
+  background-image: url("..//images/logo.png");
+  background-repeat: no-repeat;
+  margin-left: 25%;
+  width: 200px;
+  height: 200px;
+}
+
+.form {
+  margin-top: 25px;
+}
+
+.to-center {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.text {
+  color: antiquewhite;
+}
+
+.fundo-transparente {
+  background-color: rgba(255, 255, 255, 0.45);
+  width: 410px;
+  height: 410px;
+  margin-left: 650px;
+}
+
+.btn {
+  margin-left: 68%;
+}

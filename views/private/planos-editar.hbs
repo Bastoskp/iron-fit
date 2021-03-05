@@ -1,1 +1,22 @@
-<div>planos editar</div>
+
+<div class="to-center fundo-transparente" >
+<h2>Editar Plano: {{title}}</h2>
+
+<form action="/private/planos-cadastro" method="POST">
+    <label for="duracao">Duração do Plano</label>
+    <select name="duracao" id="duracao">
+        <option value="mensal">Mensal</option>
+        <option value="trimestral">Trimestral</option>
+        <option value="semestral">Semestral</option>
+        <option value="anual">Anual</option>
+       {{!-- <input type="text" id="duracao" name="duracao" placeholder="Duração do Plano" /> --}}
+    </select>   
+  
+    <label for="valorplano">Valor do Plano</label>
+    <input type="text" id="valorplano" name="valorplano" placeholder="Valor do Plano" />
+
+     <button type="submit">Salvar</button>
+
+</form>
+
+</div>

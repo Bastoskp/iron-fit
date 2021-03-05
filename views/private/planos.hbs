@@ -1,7 +1,11 @@
-<div>
+<div class="to-center fundo-transparente">
   <a href="/private/planos-cadastro">Cadastrar Planos</a>
 
   {{#each planos}}
-    <p>{{this.nome}}</p>
+    <p>{{this.duracao}}</p>
+    <a href="/private/planos/editar/{{this._id}}">Editar</a>
+    <form action="/planos/{{_id}}/delete" method="POST"> {{!-- <-- add the form  --}}
+      <button>Delete</button>
+    </form>
   {{/each}}
 </div>
