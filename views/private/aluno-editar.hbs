@@ -1,10 +1,8 @@
-<div>aluno-editar</div>
+<div  class="to-center fundo-transparente">
 
+<h2>Editar aluno</h2>
 
-
-<h2>Editar aluno: {{title}}</h2>
-
-<form class="to-center fundo-transparente" action= "/private/aluno/editar/{{alunoFromDb.id}}" method="POST">
+<form action= "/private/aluno/editar/{{alunoFromDb.id}}" method="POST">
     <label for="input-username">Nome</label>
     <input type="text" id="input-username" name="nome" value="{{alunoFromDb.nome}}" placeholder="Nome do aluno" />
 
@@ -46,3 +44,5 @@
     <button type="submit">Salvar</button>
     
 </form>
+
+</div>

@@ -6,7 +6,7 @@ const Planos = require("../models/Planos.model");
 
 router.get("/home", (req, res, next) => {
   const userInSession = req.session.currentUser;
-  res.render("private/home", userInSession);
+  res.render("private/home", { userInSession });
 });
 
 router.get("/private/aluno", (req, res, next) => {
@@ -53,14 +53,9 @@ router.get("/private/aluno/editar/:id", (req, res, next) => {
 
 router.post("/private/aluno/editar/:id", (req, res, next) => {
   const { id } = req.params;
-  // const user_id = req.session.currentUser._id;
-  const { nome, email, planos, inicioPlanos, aniversario, telefone } = req.body;
+  const { nome, email, planos, telefone } = req.body;
 
-  Aluno.findByIdAndUpdate(
-    id,
-    { nome, email, planos, inicioPlanos, aniversario, telefone },
-    { new: true }
-  )
+  Aluno.findByIdAndUpdate(id, { nome, email, planos, telefone }, { new: true })
     .then((alunoFromDb) => {
       console.log(alunoFromDb);
       res.redirect("/private/aluno");
@@ -74,7 +69,7 @@ router.post("/aluno/:id/delete", (req, res) => {
   const { id } = req.params;
 
   Aluno.findByIdAndDelete(id)
-    .then(() => res.redirect("/aluno"))
+    .then(() => res.redirect("/private/aluno"))
     .catch((error) => console.log(`Error while deleting a plano: ${error}`));
 });
 
@@ -119,7 +114,14 @@ router.get("/private/planos/editar/:id", (req, res, next) => {
 
 router.post("/private/planos/editar/:id", (req, res, next) => {
   const { id } = req.params;
-  const { duracao, valor, user_id } = req.body;
+  const { duracao, valor } = req.body;
+
+  Planos.findByIdAndUpdate(id, { duracao, valor }, { new: true })
+    .then((planosFromDb) => {
+      console.log(planosFromDb);
+      res.redirect("/private/planos");
+    })
+    .catch((error) => console.log(`Erro em atualizar planos: ${error} `));
 });
 
 // ROUTE DELETE PLANO
@@ -127,7 +129,7 @@ router.post("/planos/:id/delete", (req, res) => {
   const { id } = req.params;
 
   Planos.findByIdAndDelete(id)
-    .then(() => res.redirect("/planos"))
+    .then(() => res.redirect("/private/planos"))
     .catch((error) => console.log(`Error while deleting a plano: ${error}`));
 });
 
