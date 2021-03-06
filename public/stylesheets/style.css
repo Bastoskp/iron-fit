@@ -58,8 +58,13 @@ a {
   margin-left: 68%;
 }
 .mb-3 {
+  text-align: center;
   padding: 5px 13px;
   margin: 5px 0;
   box-sizing: border-box;
   outline: none;
+}
+
+.text-sign {
+  text-align: center;
 }
