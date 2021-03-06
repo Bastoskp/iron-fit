@@ -25,12 +25,12 @@ router.get("/private/aluno-cadastro", (req, res, next) =>
 
 router.post("/private/aluno-cadastro", (req, res, next) => {
   const user_id = req.session.currentUser._id;
-  const { nome, email, planos, inicioPlanos, aniversario, telefone } = req.body;
+  const { nome, email, planos, inicioPlano, aniversario, telefone } = req.body;
   Aluno.create({
     nome,
     email,
     planos,
-    inicioPlanos,
+    inicioPlano,
     aniversario,
     telefone,
     user_id,

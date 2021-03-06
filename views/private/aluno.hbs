@@ -1,52 +1,53 @@
-<div class="to-center fundo-transparente">
+
   <a href="/private/aluno-cadastro">Cadastrar Aluno</a>
 
   {{#each alunos}}
     <p>{{this.nome}}</p>
-    <a href="/private/aluno/editar/{{this._id}}">Editar</a>
+    {{!-- <a href="/private/aluno/editar/{{this._id}}">Editar</a>
     
       <form action="/aluno/{{_id}}/delete" method="POST"> 
         <button>Delete</button>
-      </form>
+      </form> --}}
  {{/each}}
 </div>
 
-{{!-- <div class="fundo-transparente-tabela">
+<div class="fundo-transparente-tabela">
 
 <div class="bs-example">
     <table class="table table-dark">
         <thead>
             <tr>
+                
                 <th>Nome</th>
                 <th>Email</th>
                 <th>Plano</th>
                 <th>Inicio do Plano</th>
                 <th>Aniversário</th>
                 <th>Telefone</th>
-            </tr>
+                <th>Editar/deletar</th>
+                </tr>
         </thead>
         <tbody>
+
+            {{#each alunos}}
             <tr>
+                
                 <td>{{this.nome}}</td>
-                <td>clarkkent@mail.com</td>
-                <td>Trimestral</td>
-                <td>05/03/2021</td>
-                <td>16/07/1978</td>
-                <td>123456789</td>
+                <td>{{this.email}}</td>
+                <td>{{this.planos}}</td>
+                <td>{{this.inicioPlano}}</td>
+                <td>{{this.aniversario}}</td>
+                <td>{{this.telefone}}</td>
+                <td>
+                    <a href="/private/aluno/editar/{{this._id}}">Editar</a>
+                    <form action="/aluno/{{_id}}/delete" method="POST"> 
+                        <button>Delete</button>
+                    </form>
+                </td>
             </tr>
-            <tr>
-                <td>2</td>
-                <td>John</td>
-                <td>Carter</td>
-                <td>johncarter@mail.com</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Peter</td>
-                <td>Parker</td>
-                <td>peterparker@mail.com</td>
-            </tr>            
+           {{/each}}
+
         </tbody>
     </table>
 </div>
-</div> --}}
+</div>
