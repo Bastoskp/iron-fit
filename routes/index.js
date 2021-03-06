@@ -18,7 +18,7 @@ router.post("/login", async (req, res, next) => {
 
   if (email === "" || password === "") {
     res.render("login", {
-      errorMessage: "Por entrar com email e senha para login",
+      errorMessage: "Por favor entrar com email e senha para login",
       layout: false,
     });
     return;
