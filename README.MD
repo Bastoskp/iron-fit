@@ -1,6 +1,6 @@
 ![logo](https://user-images.githubusercontent.com/66018986/110203096-edf70280-7e4a-11eb-8fc4-b61b4ff3595a.png)
 
-## _Você merece uma gestão muito mais completa._
+## Você merece uma gestão muito mais completa.
 
 IronFit é uma ferramenta moderna de gestão para seu negócio fitness.
 
