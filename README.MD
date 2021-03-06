@@ -4,8 +4,7 @@
 
 IronFit é uma ferramenta moderna de gestão para seu negócio fitness.
 
-:trophy: Login para seus colaboradores
-
+- Login para seus colaboradores
 - Cadastre seus alunos e planos
 - Veja todos os dados dos alunos
 - Editar o perfil dos aluno
