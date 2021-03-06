@@ -10,13 +10,13 @@ a {
   color: #00b7ff;
 }
 
-.ironfit {
-  /* font-family: "Goudy Bookletter 1911", sans-serif;
-  font-size: 50px; */
-}
+/* .ironfit {
+  font-family: "Goudy Bookletter 1911", sans-serif;
+  font-size: 50px;
+} */
 
 .logo {
-  background-image: url("..//images/logo.png");
+  background-image: url("../images/logo.png");
   background-repeat: no-repeat;
   margin-left: 25%;
   width: 200px;
@@ -37,12 +37,29 @@ a {
 }
 
 .fundo-transparente {
-  background-color: rgba(255, 255, 255, 0.45);
+  background-color: rgba(255, 255, 255, 0.4);
   width: 410px;
-  height: 410px;
+  height: 420px;
   margin-left: 650px;
 }
 
-.btn {
+.fundo-transparente-tabela {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.fundo-transparente-home {
+  background-color: rgba(255, 255, 255, 0.4);
+  width: 410px;
+  height: 90px;
+  margin-left: 650px;
+}
+
+.btn-nav {
   margin-left: 68%;
+}
+.mb-3 {
+  padding: 5px 13px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  outline: none;
 }
